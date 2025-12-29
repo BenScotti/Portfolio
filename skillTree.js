@@ -169,71 +169,52 @@ function createSkillTree(skill, offsetX, offsetY) {
 
 // Add lock for contain drag
 
-dragElement(c);
+  dragElement(c);
 
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    elmnt.onmousedown = dragMouseDown;
+  function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      elmnt.onmousedown = dragMouseDown;
 
-  function dragMouseDown(e) {
-    e = e;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
+    function dragMouseDown(e) {
+      e = e;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e = e;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      // pos3 = e.clientX;
+      // pos4 = e.clientY;
+      
+      offsetX = pos1;
+      offsetY = pos2;
+
+      ctx.clearRect(0,0, c.width,c.height);
+      draw(-clamp(getMaxWidth() / -2, getMaxWidth() / 2, lastXOffSet + offsetX), -clamp(getMaxHeight() / -2, getMaxHeight() / 2, lastYOffset + offsetY));
+
+
+    }
+
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+
+      lastXOffSet = clamp(getMaxWidth() / -2, getMaxWidth() / 2, lastXOffSet + pos1);
+      lastYOffset= clamp(getMaxHeight() / -2, getMaxHeight() / 2, lastYOffset + pos2);
+
+
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
   }
-
-  function elementDrag(e) {
-    e = e;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    // pos3 = e.clientX;
-    // pos4 = e.clientY;
-    
-    offsetX = pos1;
-    offsetY = pos2;
-
-    ctx.clearRect(0,0, c.width,c.height);
-    draw(-clamp(getMaxWidth() / -2, getMaxWidth() / 2, lastXOffSet + offsetX), -clamp(getMaxHeight() / -2, getMaxHeight() / 2, lastYOffset + offsetY));
-
-
-  }
-
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-
-    lastXOffSet = clamp(getMaxWidth() / -2, getMaxWidth() / 2, lastXOffSet + pos1);
-    lastYOffset= clamp(getMaxHeight() / -2, getMaxHeight() / 2, lastYOffset + pos2);
-
-
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
-    
-    // let newSkill = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    // newSkill.classList.add("skill");
-    // newSkill.setAttribute("name", skill.name.replace(" ", "_"));
-
-    // newSkill.innerHTML = "<circle r='50' cx='50' cy='50' fill='#fab308'/>";
-    
-    // if (skill.parent != "") {
-    //     let parent = document.querySelector(`[name='${skill.parent.replace(" ", "_")}']`);
-        
-    //     // console.log(skill.name + " / " + parent.getAttribute("name") + " " + parent.getBoundingClientRect().top + " + " + skill.orient_Y + " = " + (parent.getBoundingClientRect().top + skill.orient_Y));
-        
-    //     newSkill.style.top = `calc(50% - 50px + ${(skill.orient_Y)}px)`;
-    //     newSkill.style.left = `calc(50% - 50px + ${(skill.orient_X)}px)`;
-    // } else {
-    //     newSkill.firstElementChild.setAttribute("fill", "red");
-    // }
-
-    // main.appendChild(newSkill);
 }
 
 function clamp(floor, ceiling, num) {
@@ -254,7 +235,6 @@ function handleMouseMove(e) {
     mouseX = parseInt(e.clientX - 0);
     mouseY = parseInt(e.clientY - 0); // 0 is a stand in for offset
 
-    // Put your mousemove stuff here
     var hit = false;
     for (var i = 0; i < skills.length; i++) {
         var skill = skills[i];
@@ -279,6 +259,46 @@ function handleMouseMove(e) {
     tooltipC.style.display = "none";
     tooltipC.style.left = 0;
     tooltipC.style.top = 0;
+  }
+
+}
+
+function createSVG(SVG_TAG) {
+
+  switch (SVG_TAG) {
+
+    case "html":
+
+      let svg = document.createElement("svg");
+      // svg.setAttribute()
+      var path = '<path d="M6.5 13.5 l2 -12" />' + 
+                 '<path d="M4.853555 4.146445 l-3.353555 3.353555 l3.353555 3.353555"/>' + 
+                 '<path d="M10.146445 4.146445 l3.353555 3.353555 l-3.353555 3.353555"/>';
+
+      return;
+    case "style":
+      return;
+    case "js":
+      return;
+    case "firebase":
+      return;
+    case "api":
+      return;
+    case "array":
+      return;
+    case "array2":
+      return;
+    case "array3":
+      return;
+    case "string":
+      return;
+    case "func":
+      return;
+    case "recur":
+      return;
+    case "class":
+      return;
+
   }
 
 }
