@@ -12,6 +12,11 @@
 
     <script>
         const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+        if (darkThemeMq.matches) {
+            document.head.innerHTML += '<link rel="shortcut icon" href="icon_dark.svg" type="image/x-icon">'
+        } else {
+            document.head.innerHTML += '<link rel="shortcut icon" href="icon_light.svg" type="image/x-icon">'
+        }
         darkThemeMq.addEventListener("change", () => {
             if (darkThemeMq.matches) {
                 document.head.innerHTML += '<link rel="shortcut icon" href="icon_dark.svg" type="image/x-icon">'
