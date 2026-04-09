@@ -9,6 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="quests.css">
     <title>Quests</title>
+    
+    <script>
+        const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+        if (darkThemeMq.matches) {
+            console.log("Dark")
+            document.head.innerHTML += '<link rel="shortcut icon" href="icon_dark.svg" type="image/x-icon">'
+        } else {
+            console.log("Light")
+            document.head.innerHTML += '<link rel="shortcut icon" href="icon_light.svg" type="image/x-icon">'
+        }
+    </script>
+    
     <!-- <link rel="shortcut icon" href="icon.svg" type="image/x-icon"> -->
 </head>
 <body>

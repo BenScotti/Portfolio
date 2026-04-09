@@ -1,12 +1,3 @@
-const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-if (darkThemeMq.matches) {
-  console.log("Dark")
-  document.head.innerHTML += '<link rel="shortcut icon" href="icon_dark.svg" type="image/x-icon">'
-} else {
-  console.log("Light")
-  document.head.innerHTML += '<link rel="shortcut icon" href="icon_light.svg" type="image/x-icon">'
-}
-
 class project {
 
 	constructor (name, desc, tags, isCompleted, imgPth) {
