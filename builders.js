@@ -73,7 +73,8 @@ function buildNav() {
 			'<path d="M20 34 L50 34" />' +
 			'<path d="M20 12.5 L35 12.5 M20 19.5 L35 19.5 M20 26.5 L35 26.5" />' +
 		'</svg>' +
-	'</div>';
+	'</div>' + 
+		'<script>alert("This portfolio is a work in progress and thus may be unfinished or buggy in some respects.")</script>';
 
 }
 
