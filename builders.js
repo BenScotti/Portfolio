@@ -43,7 +43,7 @@ let projects = [
 function buildNav() {
 
     document.getElementById("nav").innerHTML = "" +
-	'<div id="nav-container" onload="alert(\'This portfolio is a work in progress and thus may be unfinished or buggy in some respects.\')">' +
+	'<div id="nav-container">' +
 		'<svg name="map" class="inter" width="55" height="49" stroke="currentColor">' +
 			'<path stroke-width="3" d="M5 11 L5 44 L20 38 L35 44 L50 38 L50 5 L35 11 L20 5 L5 11Z M12.125 24.5 L18.625 24.5 M21.875 24.5 L28.375 24.5 M34.875 20 L42.875 28 M34.875 28 L42.875 20"/>' +
 		'</svg>' +
